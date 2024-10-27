@@ -1,0 +1,40 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% block content %}
+
+<div class="row">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+        <p class="card-description"> Basic form elements </p> 
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>Company Name</th>
+              <th>employer_name</th>
+              <th>employer_phone</th>
+              <th>employer_email</th>
+              <th>user_name</th>
+            </tr>
+          </thead>
+          {% for employer in employers %}
+          <tr>
+            <td>{{employer.company_name}}</td>
+            <td>{{employer.employer_name}}</td>
+            <td>{{employer.employer_phone}}</td>
+            <td>{{employer.employer_email}}</td>
+            <td>{{employer.username}}</td>
+            <!-- <td><a href="/admin/job/edit/{{joblist.id}}" class="glyphicon glyphicon-pencil btn btn-outline-primary">
+                Edit
+              </a></td> -->
+            <!-- <td><a href="/admin/job/delete/{{joblist.id}}" class="btn btn-outline-danger">Delete</a></td>                    -->
+            {% endfor %}
+          </tr>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jobseeker Registration</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                background-color: #e0f7e0; /* Light green background */
+            }
+
+            h3 {
+                color: #2c662d; /* Dark green for heading */
+                text-align: center;
+            }
+
+            form {
+                background-color: #f0fff0; /* Very light green form background */
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 100, 0, 0.1); /* Greenish shadow */
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            label {
+                display: block;
+                font-weight: bold;
+                margin-top: 10px;
+                color: #2c662d; /* Dark green text */
+            }
+
+            input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="file"], textarea, select {
+                width: 100%;
+                padding: 10px;
+                margin: 5px 0 20px 0;
+                border: 1px solid #66bb6a; /* Green border */
+                border-radius: 4px;
+                box-sizing: border-box;
+                background-color: #f0fff0; /* Very light green background */
+            }
+
+            input[type="radio"] {
+                margin-left: 20px;
+            }
+
+            textarea {
+                resize: vertical;
+                height: 100px;
+            }
+
+            select[multiple] {
+                height: 150px;
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #66bb6a; /* Green border */
+                border-radius: 4px;
+                background-color: #f0fff0; /* Very light green background */
+            }
+
+            button[type="submit"] {
+                background-color: #4CAF50; /* Green button */
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+            }
+
+            button[type="submit"]:hover {
+                background-color: #45a049; /* Slightly darker green on hover */
+            }
+
+            .gender-options {
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>Jobseeker Registration</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="firstname">First Name:</label>
+            {{form.fname}}
+            <input type="text" id="firstname" name="firstname">
+            
+            <label for="lastname">Last Name:</label>
+            {{form.lname}}
+            <input type="text" id="lastname" name="lastname">
+
+            <div class="gender-options">
+                <label>Gender:</label>
+                {{form.gender}}
+                Male <input type="radio" name="gender" value="male">
+                Female <input type="radio" name="gender" value="female">
+                Other <input type="radio" name="gender" value="other">
+            </div>
+
+            <label for="bdate">Date of Birth:</label>
+            {{form.dob}}
+            <input type="date" id="bdate" name="bdate">
+
+            <label for="city">City:</label>
+            {{form.city}}
+            <input type="text" id="city" name="city">
+
+            <label for="country">Country:</label>
+            {{form.country}}
+            <input type="text" id="country" name="country">
+
+            <label for="username">Username:</label>
+            {{form.username}}
+            <input type="text" id="username" name="username">
+
+            <label for="password">Password:</label>
+            {{form.password}}
+            <input type="password" id="password" name="password">
+
+            <label for="resume">Resume:</label>
+            {{form.resume}}
+            <input type="file" id="resume" name="resume">
+
+            <label for="address">Address:</label>
+            {{form.address}}
+            <textarea id="address" name="address"></textarea>
+
+            <label for="skills">Select Your Skills:</label>
+            {{form.skills}}
+            <select id="skills" name="skills" multiple>
+                <!-- Web development skills -->
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="javascript">JavaScript</option>
+                <option value="python">Python</option>
+                <option value="django">Django</option>
+                <option value="react">React</option>
+                <option value="nodejs">Node.js</option>
+        
+                <!-- Office and productivity tools -->
+                <option value="excel">Microsoft Excel</option>
+                <option value="word">Microsoft Word</option>
+                <option value="powerpoint">PowerPoint</option>
+                <option value="google_sheets">Google Sheets</option>
+                <option value="sql">SQL</option>
+        
+                <!-- Version control and collaboration -->
+                <option value="git">Git</option>
+                <option value="github">GitHub</option>
+                <option value="jira">Jira</option>
+                <option value="slack">Slack</option>
+                
+                <!-- Additional development tools -->
+                <option value="docker">Docker</option>
+                <option value="aws">AWS</option>
+                <option value="graphql">GraphQL</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

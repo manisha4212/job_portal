@@ -1,0 +1,37 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% block content %}
+
+<div class="row">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card"><br>
+        <center><a href="{% url 'category_create' %}" class="btn btn-primary" style="text-align: right;">Add New Category</a></center><br>
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>icon</th>
+              <th>name</th>
+              <th>vacancy</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          {% for category in categories %}
+          <tr>
+            <td>{{ category.icon_class }}</td>
+            <td>{{ category.name }}</td>
+            <td>{{ category.vacancy_count }}</td>
+
+            <td><a href="{% url 'category_update' category.pk %}" class="glyphicon glyphicon-pencil btn btn-outline-primary">
+                Edit
+              </a></td> 
+            <td><a href="{% url 'category_delete' category.pk %}" class="btn btn-outline-danger">Delete</a></td>                   
+            {% endfor %}
+          </tr>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

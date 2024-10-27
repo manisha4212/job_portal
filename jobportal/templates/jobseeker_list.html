@@ -1,0 +1,52 @@
+{% extends 'admin_dashboard.html' %}
+{% block content %}
+
+<div class="row">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <!-- <div class="card-body">
+      <center><a href="/admin/job_add/" class="btn btn-primary" style="text-align: right;">Add Job</a></center><br>
+        <div class="table-responsive"> -->
+        <!-- <h4 class="card-title">Basic form elements</h4>
+        <p class="card-description"> Basic form elements </p> -->
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>FirstName</th>
+              <th>lastname</th>
+              <th>Gender</th>
+              <th>Dob</th>
+              <th>City</th>
+              <th>Country</th>
+              <th>Username</th>
+              <th>Resume</th>
+              <th>Address</th>
+              <th>Skills</th>
+            </tr>
+          </thead>
+          {% for jobseeker in jobseekers %}
+          <tr>
+            <td>{{jobseeker.fname}}</td>
+            <td>{{jobseeker.lname}}</td>
+            <td>{{jobseeker.gender}}</td>
+            <td>{{jobseeker.dob}}</td>
+            <td>{{jobseeker.city}}</td>
+            <td>{{jobseeker.country}}</td>
+            <td>{{jobseeker.username}}</td>
+            <td>{{jobseeker.resume}}</td>
+            <td>{{jobseeker.address}}</td>
+            <td>{{jobseeker.skills}}</td>
+            <!-- <td><a href="/admin/job/edit/{{joblist.id}}" class="glyphicon glyphicon-pencil btn btn-outline-primary">
+                Edit
+              </a></td> -->
+            <!-- <td><a href="/admin/job/delete/{{joblist.id}}" class="btn btn-outline-danger">Delete</a></td>                    -->
+            {% endfor %}
+          </tr>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

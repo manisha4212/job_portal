@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employer Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f5e9; /* Light green background */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center; /* Center the form horizontally */
+            align-items: center; /* Center the form vertically */
+        }
+        h3 {
+            color: #2e7d32; /* Dark green for headings */
+            text-align: center;
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px; /* Set a max width for the form */
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #4caf50; /* Green border for input fields */
+            border-radius: 4px;
+            background-color: #e8f5e9; /* Light green background for inputs */
+        }
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            outline-color: #2e7d32; /* Dark green outline when focused */
+        }
+        button {
+            background-color: #43a047; /* Green button */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            width: 100%; /* Full width for the button */
+            text-align: center;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #388e3c; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data" action="{% url 'create_employer' %}">
+        {% csrf_token %}
+        
+        <h3>Employer Registration</h3>
+        <label for="company_name">Name Of Company:</label>
+        <input type="text" id="company_name" name="company_name" required placeholder="Enter company name">
+
+
+        <label for="employer_name">Name of Contact Person:</label>
+        <input type="text" id="employer_name" name="employer_name" required placeholder="Enter contact name">
+
+        <label for="employer_phone">Phone:</label>
+        <input type="text" id="employer_phone" name="employer_phone" required placeholder="Enter phone number">
+
+
+        <label for="employer_email">Email:</label>
+        <input type="email" id="employer_email" name="employer_email" required placeholder="Enter email (e.g., @gmail.com)">
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required placeholder="Enter Username">
+        
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required placeholder="Enter your password">
+        
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

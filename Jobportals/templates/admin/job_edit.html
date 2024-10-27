@@ -1,0 +1,62 @@
+{% extends 'admin/admin_dashboard.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Edit Job</h4>
+        <p class="card-description"> Update the job details below </p>
+        <form class="forms-sample" action="{% url 'admin_job_edit' job.id %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputName1">Company Logo</label>
+            <input type="file" name="companylogo" class="form-control" id="exampleInputName1">
+            {% if job.companylogo %}
+              <img src="{{ job.companylogo.url }}" alt="{{ job.title }}" width="100">
+            {% endif %}
+          </div>
+          
+          <div class="form-group">
+            <label for="exampleInputName1">Title</label>
+            <input type="text" name="title" class="form-control" id="exampleInputName1" value="{{ job.title }}">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputCity1">City</label>
+            <input type="text" name="city" class="form-control" id="exampleInputCity1" value="{{ job.city }}">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputCity1">Country</label>
+            <input type="text" name="country" class="form-control" id="exampleInputCity1" value="{{ job.country }}">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Type</label>
+            <select name="type" class="form-select" id="exampleFormControlSelect2">
+              <option value="full-time" {% if job.type == 'full-time' %}selected{% endif %}>Full Time</option>
+              <option value="part-time" {% if job.type == 'part-time' %}selected{% endif %}>Part Time</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputCity1">Min Salary</label>
+            <input name="min_salary_range" type="range" id="minSalaryRange" min="100000" max="500000" step="1000" value="{{ job.min_salary_range }}" oninput="updateSalary(this.value)">
+            <output id="salaryOutput">${{ job.min_salary_range }}</output>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputCity1">Max Salary</label>
+            <input name="max_salary_range" type="range" id="maxSalaryRange" min="100000" max="500000" step="1000" value="{{ job.max_salary_range }}" oninput="updateSalary(this.value)">
+            <output id="salaryOutput">${{ job.max_salary_range }}</output>
+          </div>
+
+          <button type="submit" class="btn btn-primary mr-2">Save Changes</button>
+          <a href="{% url 'admin_job_list' %}" class="btn btn-dark">Cancel</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

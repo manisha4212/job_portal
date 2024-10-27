@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+		<div>
+		    <ul>
+			    {% if user.is_authenticated %}
+			    <span>Logged in as {{ user.phone_no }} </span>
+			    <li><a href="/logout">Logout</a></li>
+			    {% else %}
+			    <li><a href="/login">Login</a></li>
+			    {% endif %}
+		    </ul>
+		</div>
+
+		<div>
+			{% block content %} {% endblock %}
+		</div>
+
+
+		<div>
+			{% if messages %}
+			<ul>
+				{% for message in messages %}
+					<li>{{ message }}</li>
+				{% endfor %}
+			</ul>
+		    {% endif %}
+		</div>
+	</body>
+</html>

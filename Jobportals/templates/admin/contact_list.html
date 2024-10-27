@@ -1,0 +1,42 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% block content %}
+
+<div class="row">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      {% if contacts %}
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Subject</th>
+              <th>Message</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.subject }}</td>
+                <td>{{ contact.message }}</td>
+                <td>{{ contact.created_at|date:"Y-m-d H:i" }}</td>
+            </tr>
+            {% endfor %}
+            <!-- <td><a href="/admin/job/edit/{{joblist.id}}" class="glyphicon glyphicon-pencil btn btn-outline-primary">
+                Edit
+              </a></td> -->
+            <!-- <td><a href="/admin/job/delete/{{joblist.id}}" class="btn btn-outline-danger">Delete</a></td>                    -->
+          </tr>
+        </table>
+        {% else %}
+        <p>No contact messages found.</p>
+        {% endif %}
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% block content %}
+<div class="row">
+
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <form class="forms-sample" action="{% url 'category_create' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <!-- {{ form.as_p }} -->
+          <div class="form-group">
+            <label for="icon_class">Icon Class</label>
+            <input type="text" class="form-control" id="icon_class" name="icon_class" placeholder="e.g., fa-user-tie" required>
+            <small class="form-text text-muted">Enter the Font Awesome icon class (e.g., fa-user-tie).</small>
+        </div>
+        
+        <div class="form-group">
+            <label for="name">Category Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter category name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="vacancy_count">Vacancy Count</label>
+            <input type="number" class="form-control" id="vacancy_count" name="vacancy_count" placeholder="Enter number of vacancies" required>
+        </div>
+          <button type="submit" class="btn btn-primary mr-2">Add</button>
+          <button class="btn btn-dark">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

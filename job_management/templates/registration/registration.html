@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            /*background-image: url('https://images.pexels.com/photos/1363876/pexels-photo-1363876.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');*/
+            background-image: url('/static/img/reg3.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /*White background with some transparency */
+            padding: 30px;
+            border-radius: 8px;
+            color:black
+        }
+        .btn-success {
+            background-color: #28a745; /* Bootstrap green color */
+            border-color: #28a745;
+        }
+        .btn-success:hover {
+            background-color: #218838; /* Darker green on hover */
+            border-color: #1e7e34;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Register</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>Have an account? <a href="/login">Login here</a></p>
+            <button type="submit" class="btn btn-success">Register</button>
+        </form>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

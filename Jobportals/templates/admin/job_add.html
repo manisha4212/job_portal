@@ -1,0 +1,69 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% block content %}
+<div class="row">
+
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Add Job</h4>
+        <p class="card-description">Add the job details below</p>
+        <form class="forms-sample" action="{% url 'admin_job_add' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputName1"> Companylogo </label>
+          
+            <div>
+            <span class="input-group-append">
+            <input type="file" name="companylogo" class="form-control" id="exampleInputName1" placeholder="Name">
+              <button class="file-upload-browse btn btn-primary" type="submit">Upload</button>
+            </span>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="exampleInputName1"> Title</label>
+            <input type="text" name="title" class="form-control" id="exampleInputName1" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputCity1">City</label>
+            
+            <input type="text"  name="city" class="form-control" id="exampleInputCity1" placeholder="Location">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputCity1">Country</label>
+
+            <input name="country" type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlSelect2">Type</label>
+            <select name="type" class="form-select" id="exampleFormControlSelect2">
+              <option value="full-time">Full Time</option>
+              <option value="part-time">Part Time</option>
+          </select>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputCity1">Min Salary</label>
+            <input name="min_salary_range" type="range" id="minSalaryRange" min="100000" max="500000" step="1000" value="123000" oninput="updateSalary(this.value)">
+            <output id="salaryOutput">$123,000</output>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputCity1">Max Salary</label>
+            
+            <input name="max_salary_range" type="range" id="maxSalaryRange" min="100000" max="500000" step="1000" value="123000" oninput="updateSalary(this.value)">
+            <output id="salaryOutput">$123,000</output>
+          </div>
+
+          
+         
+          <button type="submit" class="btn btn-primary mr-2">Add</button>
+          <button class="btn btn-dark">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

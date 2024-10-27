@@ -1,0 +1,30 @@
+{% extends 'admin/admin_layout.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <!-- <h4 class="card-title">Basic form elements</h4>
+        <p class="card-description"> Basic form elements </p> -->
+        <table class="table table-striped table-bordered table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th>Email</th>
+              <th>User Name</th>
+             
+            </tr>
+          </thead>
+          {% for user in users %}
+          <tr>
+            <td>{{user.email}}</td>
+            <td>{{user.user_name}}</td>
+           
+            {% endfor %}
+          </tr>
+        </table><br><br>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Jobseeker Registration</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                background-color: #e0f7e0; /* Light green background */
+            }
+
+            h3 {
+                color: #2c662d; /* Dark green for heading */
+                text-align: center;
+            }
+
+            form {
+                background-color: #f0fff0; /* Very light green form background */
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 100, 0, 0.1); /* Greenish shadow */
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            label {
+                display: block;
+                font-weight: bold;
+                margin-top: 10px;
+                color: #2c662d; /* Dark green text */
+            }
+
+            input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="file"], textarea, select {
+                width: 100%;
+                padding: 10px;
+                margin: 5px 0 20px 0;
+                border: 1px solid #66bb6a; /* Green border */
+                border-radius: 4px;
+                box-sizing: border-box;
+                background-color: #f0fff0; /* Very light green background */
+            }
+
+            input[type="radio"] {
+                margin-left: 20px;
+            }
+
+            textarea {
+                resize: vertical;
+                height: 100px;
+            }
+
+            select[multiple] {
+                height: 150px;
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #66bb6a; /* Green border */
+                border-radius: 4px;
+                background-color: #f0fff0; /* Very light green background */
+            }
+
+            button[type="submit"] {
+                background-color: #4CAF50; /* Green button */
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                display: block; /* Make the button a block element */
+                margin: 0 auto; 
+            }
+
+            button[type="submit"]:hover {
+                background-color: #45a049; /* Slightly darker green on hover */
+            }
+
+            .gender-options {
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+    <form method="post" enctype="multipart/form-data" action="{% url 'create_employer' %}">
+        {% csrf_token %}
+        
+        <h3>Employer Registration</h3>
+
+        <label for="company_name">Name Of Company:</label>
+        <input type="text" id="company_name" name="company_name" required placeholder="Enter company name">
+
+        <label for="employer_name">Name of Contact Person:</label>
+        <input type="text" id="employer_name" name="employer_name" required placeholder="Enter contact name">
+
+        <label for="employer_phone">Phone:</label>
+        <input type="text" id="employer_phone" name="employer_phone" required placeholder="Enter phone number">
+
+        <label for="employer_email">Email:</label>
+        <input type="email" id="employer_email" name="employer_email" required placeholder="Enter email (e.g., @gmail.com)">
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required placeholder="Enter Username">
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required placeholder="Enter your password">
+        
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

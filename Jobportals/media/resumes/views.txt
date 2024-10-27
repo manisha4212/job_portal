@@ -1,0 +1,113 @@
+# def jobseeker_register(request):
+#     if request.method == 'POST':
+#         form = JobseekerForm(request.POST, request.FILES)  # Also handling file uploads (resume)
+#         username = request.POST.get('username', None)  # Replace 'sid' with 'username' or relevant field
+
+#         try:
+#             # Check if a jobseeker with the same username already exists
+#             existing_jobseeker = Jobseeker.objects.get(username=username)
+#         except Jobseeker.DoesNotExist:
+#             existing_jobseeker = None
+        
+#         if existing_jobseeker:
+#             messages.warning(request, "Username already exists")
+#             return redirect('/studentapp/student_data')  # Redirecting to an appropriate page if it exists
+#         else:
+#             if form.is_valid():
+#                 try:
+#                     form.save()  # Save the valid form
+#                     #messages.success(request, "Data stored successfully")
+#                     return redirect('/index')  # Redirect after success
+#                 except Exception as e:
+#                     messages.error(request, f"An error occurred: {str(e)}")
+#             else:
+#                 messages.error(request, "Form is invalid")
+#     else:
+#         form = JobseekerForm()
+
+#     return render(request, 'admin/jobseeker_register.html', {'form': form})
+
+
+# def jobseeker_list(request):
+#     jobseeker_list =Jobseeker.objects.all()
+
+#     return render(request,'admin/jobseeker_list.html',{'jobseeker_list':jobseeker_list})
+
+# @login_required(login_url="/login")
+
+# def jobseeker_login(request):
+#    request.session['user_name']=request.user.user_name
+#    return render(request,'home.html')
+
+# def JobseekerLogoutView(request):
+#     logout(request)
+#     return redirect('login')
+
+# def jobseeker_login(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username=username, password=password)
+#         messages.error(user, user.fname)
+
+#         if user is not None:
+#             login(request, user)
+#             return redirect('/index')  # Replace with your dashboard view
+#         else:
+#             messages.error(request, 'Invalid username or password.')
+#     return render(request, 'jobseeker_login.html')
+
+# class JobseekerLogoutView(LogoutView):
+#     next_page = reverse_lazy('jobseeker_login')
+
+# def employer_login(request):
+#       return render(request,'admin/employer_login.html')
+
+
+
+# def employer_register(request):
+#     if request.method == 'POST':
+#         form = EmployerForm(request.POST)
+#         if form.is_valid():
+#             form.save()  # Save the user without logging in
+#             messages.success(request, 'Registration successful.')  # Success message
+#             return redirect('/index')  # Redirect to the index page after registration
+#         else:
+#             messages.error(request, 'Registration failed. Please correct the errors.')  # Error message
+#     else:
+#         form = EmployerForm()  # Display empty form for GET request
+
+#     return render(request, 'admin/employer_register.html', {'form': form}) 
+
+
+# def employer_login(request):
+#     if request.method == 'POST':
+#         form = AuthenticationForm(request, data=request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(request, username=username, password=password)
+#             if user is not None:
+#                 login(request, user)
+#                 messages.success(request, f'Hello, {user.username}!')  # Welcome message
+#                 return redirect('/index')  # Redirect to index page after login
+#             else:
+#                 messages.error(request, 'Invalid username or password.')
+#         else:
+#             messages.error(request, 'Invalid username or password.')
+#     else:
+#         form = AuthenticationForm()
+
+#     return render(request, 'admin/employer_login.html', {'form': form})
+
+
+# # Employer Logout View
+# def employer_logout(request):
+#     logout(request)
+#     messages.success(request, 'You have been logged out.')  # Logout message
+#     return redirect('login')  # Redirect to login page after logout
+
+# def employer_list(request):
+#     job_list =Employer.objects.all()
+#     return render(request,'admin/employer_list.html',{'job_list':job_list})
+

@@ -1,0 +1,18 @@
+<!-- application_success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Success</title>
+</head>
+<body>
+
+    <h1>Application Submitted Successfully!</h1>
+
+    <p>Thank you for applying. You can view your application history below:</p>
+
+    <a href="{% url 'job_application_history' %}?email={{ applicant_email }}">View Application History</a>
+
+</body>
+</html>
